@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products-CodeAlpha Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <div class="logo">CodeAlpha Store</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart(<span id="card-count">0</span>)</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+    <h1 class="page-title">Our Products</h1>
+    <div class="products-container">
+        <div class="product-card">
+            <img src="https://www.apple.com/newsroom/images/2025/09/apple-debuts-iphone-17/geo/article/Apple-iPhone-17-hero-250909_inline.jpg.large_2x.jpg" alt="Product">
+            <h3><a href="product-iphone.html">Iphone 17</a></h3>
+            <p>83,000 Rs.</p>
+            <button onclick="addToCart('Iphone 17')">Add to Cart</button>
+        </div>
+         <div class="product-card">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.7X1q6G1O_b64HDIN8D_3bAHaEK?pid=Api&P=0&h=180" alt="Product">
+            <h3><a href="product-samsung.html">SamSung S24</a></h3>
+            <p>70,000 Rs.</p>
+            <button onclick="addToCart('SamSung S24')">Add to Cart</button>
+        </div>
+         <div class="product-card">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.fkIBlDJFIx8XLJkkEapa6AHaHa?pid=Api&P=0&h=180" alt="Product">
+            <h3><a href="product-headphone.html">Boat HeadPhones</a></h3>
+            <p>5,000 Rs.</p>
+            <button onclick="addToCart('Boat HeadPhones')">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="https://www.gadgetvoize.com/wp-content/uploads/2021/05/gigabyrte.jpg" alt="Product">
+            <h3><a href="product-laptop.html">Laptop</a></h3>
+            <p>50,000 Rs.</p>
+            <button onclick="addToCart('Laptop')">Add to Cart</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

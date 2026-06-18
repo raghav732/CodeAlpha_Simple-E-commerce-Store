@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">CodeAlpha Store</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+        </ul>
+    </nav>
+    <h1 class="page-title">Shopping Cart</h1>
+    <button onclick="clearCart()">Clear Cart</button>
+    <div id="cart-items"></div>
+    <div style="text-align: center;margin-top:20px ;">
+        <button onclick="placeOrder()">Place Order</button>
+    </div>
+    <script>
+      async function placeOrder(){
+         let cart=JSON.parse(localStorage.getItem("cart"))||[];
+         if(cart.length===0){
+            alert("Your cart is empty!");
+            return;
+         }
+         const response=await fetch("/place-order",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                products:cart
+            })
+         });
+         const data=await response.json();
+         alert(data.message);
+         localStorage.removeItem("cart");
+         window.location.href="order-success.html";
+        }
+    function removeItem(index){
+    let cart=JSON.parse(localStorage.getItem("cart"))||[];
+    cart.splice(index,1);
+    localStorage.setItem("cart",JSON.stringify(cart));
+    location.reload();
+    }
+      function clearCart(){
+            localStorage.removeItem("cart");
+            location.reload();
+        }
+        let cart=JSON.parse(localStorage.getItem("cart"))||[];
+        let cartContainer=document.getElementById("cart-items");
+        if(cart.length===0){
+            cartContainer.innerHTML="<h2>Your cart is Empty</h2>";
+        }
+        else{
+            cart.forEach((product,index)=>{
+               cartContainer.innerHTML+=`<div class="product-card">
+                <h3>${product}</h3>
+                <button onclick="removeItem(${index})">Remove</button>
+            </div>`; 
+            });
+        }
+    </script>
+</body>
+</html>
